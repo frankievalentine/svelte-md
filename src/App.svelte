@@ -1,30 +1,61 @@
 <script>
-	export let name;
+	import marked from 'marked';
+
+	let source = '# New document';
+	let markdown = marked(source);
 </script>
 
-<main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
-</main>
+<header class="header">
+		<h1 class="header-title">Svelte ⚡️ Markdown Editor</h1>
+</header>
+
+<div class="markdown-editor">
+	<div class="markdown-editor__left-panel">
+		<textarea class="markdown-editor__source"></textarea>
+	</div>
+
+	<div class="markdown-editor__right-panel">
+		<div class="markdown-editor__output">{markdown}</div>
+	</div>
+</div>
 
 <style>
-	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
+	.header {
+		height: 10vh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 	}
 
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
+	.header-title {
+		margin: 0;
 	}
 
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
+	.markdown-editor {
+		width: 100%;
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-evenly;
+	}
+
+	.markdown-editor__left-panel, .markdown-editor__right-panel {
+		width: 50%;
+		border: solid 1px black;
+		height: 90vh;
+	}
+
+	.markdown-editor__source {
+		border: none;
+		width: 100%;
+		height: 100%;
+	}
+
+	.markdown-editor__source:focus {
+		outline: none;
+	}
+	
+	.markdown-editor__output {
+		width: 100%;
+		padding: 0 2em;
 	}
 </style>
