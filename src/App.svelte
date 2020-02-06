@@ -2,7 +2,7 @@
 	import marked from 'marked';
 
 	let source = '# New document';
-	let markdown = marked(source);
+	$: markdown = marked(source);
 </script>
 
 <header class="header">
@@ -11,11 +11,11 @@
 
 <div class="markdown-editor">
 	<div class="markdown-editor__left-panel">
-		<textarea class="markdown-editor__source"></textarea>
+		<textarea bind:value={source} class="markdown-editor__source"></textarea>
 	</div>
 
 	<div class="markdown-editor__right-panel">
-		<div class="markdown-editor__output">{markdown}</div>
+		<div class="markdown-editor__output">{@html markdown}</div>
 	</div>
 </div>
 
